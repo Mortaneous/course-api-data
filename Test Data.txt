@@ -1,0 +1,26 @@
+{
+    "id": "spring",
+    "title": "Spring Framework",
+    "description": "Spring Framework tutorial for experts"
+}
+{
+    "id": "java",
+    "title": "Java SE",
+    "description": "Java Standard Edition 1.8"
+}
+{
+    "id": "javaEE",
+    "title": "Java Enterprise Edition",
+    "description": "Java EE: Advanced Java Development"
+}
+{
+    "id": "springboot",
+    "title": "Spring Framework 2",
+    "description": "Spring Framework v2"
+}
+
+{
+    "id": "springboot",
+    "title": "Spring Boot Framework",
+    "description": "Bootstrapping Spring Framework"
+}
