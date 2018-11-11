@@ -40,9 +40,4 @@ public class TopicService {
 		return topic;
 	}
 
-	/*
-	private Topic findTopic(String id) {
-		return topics.stream().filter((Topic t) -> id.equals(t.getId())).findFirst().get();
-	}
-	*/
 }
