@@ -2,6 +2,12 @@ package com.mortaneous.springboot.courseapidata.course;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mortaneous.springboot.courseapidata.topic.Topic;
+
 
 @Entity
 public class Course {
@@ -10,14 +16,18 @@ public class Course {
 	private String id;
 	private String title;
 	private String description;
+	
+	@ManyToOne
+	private Topic topic;
 
 	public Course() {
 	}
 
-	public Course(String id, String title, String description) {
+	public Course(String id, String title, String description, String topicId) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.topic = new Topic(topicId, "", "");
 	}
 
 	public String getId() {
@@ -45,6 +55,14 @@ public class Course {
 	public Course setDescription(String description) {
 		this.description = description;
 		return this;
+	}
+
+	public Topic getTopic() {
+		return topic;
+	}
+
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 
 }

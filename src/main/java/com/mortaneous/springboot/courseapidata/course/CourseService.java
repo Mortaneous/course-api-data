@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mortaneous.springboot.courseapidata.topic.Topic;
+
 @Service
 public class CourseService {
 
@@ -15,7 +17,8 @@ public class CourseService {
 
 	/* Create */
 	/* Update */
-	public Course addCourse(Course course) {
+	public Course addCourse(String topicId, Course course) {
+		course.setTopic(new Topic(topicId, "", ""));
 		return courseRepository.save(course);
 	}
 
@@ -25,10 +28,13 @@ public class CourseService {
 	}
 
 	/* Read (All) */
-	public List<Course> getAllCourses() {
-		List<Course> allCourses = new ArrayList<>();
-		courseRepository.findAll().forEach(allCourses::add);
-		return allCourses;
+	public List<Course> getAllTopicCourses(String topicId) {
+		List<Course> allTopicCourses = new ArrayList<>();
+		
+		courseRepository.findByTopicId(topicId)
+			.forEach(allTopicCourses::add);
+
+		return allTopicCourses;
 	}
 
 	/* Delete */

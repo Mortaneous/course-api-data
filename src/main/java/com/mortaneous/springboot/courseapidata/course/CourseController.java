@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/topics/{topicId}/courses")
 public class CourseController {
 
 	@Autowired
 	private CourseService courseService;
 
 	@GetMapping
-	public List<Course> getAllCourses() {
-		return courseService.getAllCourses();
+	public List<Course> getAllTopicCourses(@PathVariable String topicId) {
+		return courseService.getAllTopicCourses(topicId);
 	}
 
 	@PostMapping
-	public Course createCourses(@RequestBody Course course) {
-		return courseService.addCourse(course);
+	public Course createCourses(@RequestBody Course course, @PathVariable String topicId) {
+		return courseService.addCourse(topicId, course);
 	}
 
 	@GetMapping("/{id}")
@@ -36,13 +36,9 @@ public class CourseController {
 	}
 	
 	@PutMapping("/{id}")
-	public Course updateCourse(@PathVariable String id, @RequestBody Course course) {
+	public Course updateCourse(@PathVariable String id, @RequestBody Course course, @PathVariable String topicId) {
 		course.setId(id);
-		return courseService.addCourse(course);
+		return courseService.addCourse(topicId, course);
 	}
 	
-	@DeleteMapping("/{id}")
-	public Course deleteCourse(@PathVariable String id) {
-		return courseService.deleteCourse(id);
-	}
 }

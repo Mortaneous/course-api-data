@@ -1,7 +1,13 @@
 package com.mortaneous.springboot.courseapidata.topic;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.mortaneous.springboot.courseapidata.course.Course;
 
 @Entity
 public class Topic {
@@ -11,6 +17,9 @@ public class Topic {
 	private String title;
 	private String description;
 
+	@OneToMany
+	private List<Course> courses;
+	
 	public Topic() {
 	}
 
